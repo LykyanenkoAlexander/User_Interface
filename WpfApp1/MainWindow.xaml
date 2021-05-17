@@ -45,22 +45,28 @@
     </Window.CommandBindings>
 
 
-    <Grid Background="LightSteelBlue">
+    <Grid>
+        <Grid.Background>
+            <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.InfoColorKey}}"/>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="400 px" />
             <ColumnDefinition Width="5 px" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <Menu Height="30" Margin="10,10,10,0" VerticalAlignment="Top" Foreground="#FFDE1616" Background="#FF080404">
+        <Menu Height="30" Margin="10,5,10,0" VerticalAlignment="Top" Foreground="#FFDE1616">
+            <Menu.Background>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.InfoColorKey}}"/>
+            </Menu.Background>
 
-            <MenuItem Header="File" Background="#FF0E0B0B" Foreground="#FF867D7D" FontFamily="Arial Black">
+            <MenuItem Header="File"  Foreground="#FF1F0404" FontFamily="Arial Black">
                 <MenuItem Header="New" Click="menuItem_New"/>
                 <MenuItem Header="Open" Click="menuItem_Open"/>
                 <MenuItem Header="Save" Click="menuItem_Save"/>
             </MenuItem>
 
-            <MenuItem Header="Edit" Background="#FF0A0101" Foreground="#FF827C7C" FontFamily="Arial Black">
+            <MenuItem Header="Edit" Foreground="#FF191616" FontFamily="Arial Black">
                 <MenuItem Header="Add Defaults" Click="menuItem_AddDefaults"/>
                 <MenuItem Header="Add Defaults V2DataCollecton" Click="menuItem_AddDefaults_V2DataCollection"/>
                 <MenuItem Header="Add Defaults V2DataOnGrid" Click="menuItem_AddDefaults_V2DataOnGrid"/>
@@ -69,9 +75,9 @@
             </MenuItem>
 
         </Menu>
-        
-        <StackPanel Grid.Column="0">
-            <Rectangle Fill="Black" Width="auto" Height="5" Margin="5,5,5,0"/>
+
+        <StackPanel Grid.Column="0" >
+            
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
@@ -82,26 +88,83 @@
                     <ColumnDefinition />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Row="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Text="FILE" />
 
-                <Button Name="button_Delete" Grid.Row="1" Grid.Column="0" Margin="10,10,0,10" Content="Remove" Command="ApplicationCommands.Delete" CommandParameter="From FileMenu"  />
-                <Button Name="button_Load" Grid.Row="1" Grid.Column="1" Margin="10,10,0,10" Content="Open" Command="ApplicationCommands.Open" CommandParameter="From FileMenu"  />
-                <Button Name="button_Save" Grid.Row="1" Grid.Column="2" Margin="10,10,10,10" Content="Save" Command="ApplicationCommands.Save" CommandParameter="From FileMenu" />
                 
-                
+
+
             </Grid>
-            <Rectangle Fill="Black" Width="auto" Height="5" Margin="5,0"/>
-            <TextBlock Grid.Row="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Text="EDIT" />
-            <Button Height="40" Margin="10,10,10,0" Content="Add Defaults" Click="menuItem_AddDefaults"/>
-            <Button Height="40" Margin="10,10,10,0" Content="Add Default V2DataCollection" Click="menuItem_AddDefaults_V2DataCollection"/>
-            <Button Height="40" Margin="10,10,10,0" Content="Add Default V2DataOnGrid" Click="menuItem_AddDefaults_V2DataOnGrid"/>
-            <Button Height="40" Margin="10,10,10,0" Content="Add Element from File" Click="menuItem_Add_Element_from_File"/>
-            <Button Height="40" Margin="10,10,10,0" Content="Show middle value" Click="Button_Click"/>
+
+            <Button Height="40" Margin="10,-35,10,0" Content="New" Click="menuItem_New">
+                <Button.Background>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlColorKey}}"/>
+                </Button.Background>
+                <Button.OpacityMask>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.AppWorkspaceColorKey}}"/>
+                </Button.OpacityMask>
+            </Button>
             
+            <Button Height="40" Margin="10,10,10,0" Content="Remove" Command="ApplicationCommands.Delete" CommandParameter="From FileMenu">
+                <Button.Background>
+                    <SolidColorBrush Color="#FFF75858"/>
+                </Button.Background>
+                <Button.OpacityMask>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.AppWorkspaceColorKey}}"/>
+                </Button.OpacityMask>
+            </Button>
+
+            <Button Height="40" Margin="10,10,10,0" Content="Open" Command="ApplicationCommands.Open" CommandParameter="From FileMenu">
+                <Button.Background>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.MenuHighlightColorKey}}"/>
+                </Button.Background>
+                <Button.OpacityMask>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.AppWorkspaceColorKey}}"/>
+                </Button.OpacityMask>
+            </Button>
+
+
+            <Button Height="40" Margin="10,10,10,0" Content="Save" Command="ApplicationCommands.Save" CommandParameter="From FileMenu" >
+                <Button.Background>
+                    <SolidColorBrush Color="#FF87ED84"/>
+                </Button.Background>
+                <Button.OpacityMask>
+                    <SolidColorBrush Color="#FFABABAB"/>
+                </Button.OpacityMask>
+            </Button>
+
+
+            <Button Height="40" Margin="10,10,10,0" Content="Add Defaults" Click="menuItem_AddDefaults">
+                <Button.Background>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}"/>
+                </Button.Background>
+                <Button.OpacityMask>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.AppWorkspaceColorKey}}"/>
+                </Button.OpacityMask>
+            </Button>
+            <Button Height="40" Margin="10,10,10,0" Content="Add Default V2DataCollection" Click="menuItem_AddDefaults_V2DataCollection">
+                <Button.Background>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}"/>
+                </Button.Background>
+            </Button>
+            <Button Height="40" Margin="10,10,10,0" Content="Add Default V2DataOnGrid" Click="menuItem_AddDefaults_V2DataOnGrid">
+                <Button.Background>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}"/>
+                </Button.Background>
+            </Button>
+            <Button Height="40" Margin="10,10,10,0" Content="Add Element from File" Click="menuItem_Add_Element_from_File">
+                <Button.Background>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}"/>
+                </Button.Background>
+            </Button>
+            <Button Height="40" Margin="10,10,10,0" Content="Show middle value" Click="Button_Click">
+                <Button.Background>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}"/>
+                </Button.Background>
+            </Button>
+
 
 
             <Rectangle Fill="Black" Width="auto" Height="5" Margin="5,10,5,0"/>
-            <TextBlock Grid.Row="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Text="ADD DATAITEM" />
+            <TextBlock Grid.Row="0" Grid.ColumnSpan="3" Margin="1,20,1,1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Text="ADD DATAITEM" />
             <Grid Name="grid_DataItemCreator">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50" />
@@ -135,11 +198,15 @@
                          Text="{Binding Im_Value, ValidatesOnExceptions=True, ValidatesOnDataErrors=True}"/>
 
             </Grid>
-            <Button Height="40" Margin="10,0,10,0" Content="Add DataItem" Command="{x:Static local:MainWindow.AddCustomCommand}"/>
+            <Button Height="40" Margin="10,10,10,0" Content="Add DataItem" Command="{x:Static local:MainWindow.AddCustomCommand}">
+                <Button.Background>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveCaptionColorKey}}"/>
+                </Button.Background>
+            </Button>
 
         </StackPanel>
 
-        <Rectangle Grid.Column="1" Fill="Black" />
+
 
         <Grid Grid.Column="2">
             <Grid.ColumnDefinitions>
@@ -150,34 +217,40 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height ="10 px" />
                 <RowDefinition Height ="30 px" />
-                <RowDefinition Height="*" />
+                <RowDefinition Height="177*" />
                 <RowDefinition Height ="10 px" />
                 <RowDefinition Height ="30 px" />
-                <RowDefinition Height="*" />
+                <RowDefinition Height="15*" />
+                <RowDefinition Height="163*"/>
                 <RowDefinition Height ="10 px" />
                 <RowDefinition Height ="30 px" />
-                <RowDefinition Height="*" />
+                <RowDefinition Height="177*" />
             </Grid.RowDefinitions>
 
-            <Rectangle Grid.Row="0" Grid.ColumnSpan="2" Fill="Black" Width="auto" Height="5" Margin="5,5,5,0"/>
-            <TextBlock Grid.Row="1" Grid.Column="0"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Text="Main Collection" />
+           
+            <TextBlock Grid.Row="1"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Text="Main Collection" />
             <TextBlock Grid.Row="1" Grid.Column="1"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Text="Middle Value" />
             <ListBox Name="listBox_Main" Grid.Row="2" Grid.Column="0" Margin="10,5,10,5" ItemsSource="{Binding}" SelectionChanged ="ListBox_SelectionChanged" />
-            <TextBlock Grid.Row="2" Grid.Column="1" Margin="0,10,10,5" Text="{Binding Path=MidVal_func}" />
-
-            <Rectangle Grid.Row="3" Grid.ColumnSpan="2" Fill="Black" Width="auto" Height="5" Margin="5,5,5,0"/>
-            <TextBlock Grid.Row="4" Grid.Column="0"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Text="Data On Grid" />
-            <TextBlock Grid.Row="4" Grid.Column="1"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Text="Selected Item" />
-            <ListBox Name="listBox_DataOnGrid" Grid.Row="5" Grid.Column="0" Margin="10,5,10,10" ItemsSource="{Binding Source={StaticResource listDataOnGrid}}" />
-            <TextBlock Grid.Row="5" Grid.Column="1" Margin="0,10,10,5" Text="{Binding ElementName=listBox_DataOnGrid, Path=SelectedItem, Converter={StaticResource DataItemConverterValue}}" />
-
+            <TextBlock Grid.Row="2" Grid.Column="1" Margin="0,10,10,5" Text="{Binding Path=MidVal_func}"  />
             
 
-            <Rectangle Grid.Row="6" Grid.ColumnSpan="2" Fill="Black" Width="auto" Height="5" Margin="5,5,5,0"/>
-            <TextBlock Grid.Row="7" Grid.Column="0"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Text="Data Collections" />
-            <TextBlock Grid.Row="7" Grid.Column="1"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Text="Selected Item" />
-            <ListBox Name="listBox_DataCollection" Grid.Row="8" Grid.Column="0" Margin="10,5,10,0" ItemsSource="{Binding Source={StaticResource listDataCollection}}" SelectionChanged ="ListBox_SelectionChanged"/>
-            <ListBox Name="listBox_details" Grid.Row="8" Grid.Column="1" Margin="0,5,10,10" ItemsSource="{Binding ElementName=listBox_DataCollection, Path=SelectedItem}"  />
+            <TextBlock Grid.Row="4"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Text="Data On Grid" />
+            <TextBlock Grid.Row="4" Grid.Column="1"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Text="Selected Item" />
+            
+            <ListBox Name="listBox_DataOnGrid" Grid.Row="5" Grid.Column="0" Margin="10,3,10,12" ItemsSource="{Binding Source={StaticResource listDataOnGrid}}" Grid.RowSpan="2" />
+            <TextBlock Grid.Row="5" Grid.Column="1" Margin="0,10,10,5" Text="{Binding ElementName=listBox_DataOnGrid, Path=SelectedItem, Converter={StaticResource DataItemConverterValue}}" Grid.ColumnSpan="2" Grid.RowSpan="2" />
+
+            
+            <TextBlock Grid.Row="5" Grid.Column="1" Margin="0,10,10,5" Text="{Binding ElementName=listBox_DataOnGrid, Path=SelectedItem, Converter={StaticResource DataItemConverterValue}}" />
+
+
+            <TextBlock Grid.Row="7"  HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20" Text="Data Collections" Margin="0,10,0,0" Grid.RowSpan="2" />
+            <TextBlock Grid.Row="8" Grid.Column="1"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Text="Selected Item" />
+            <ListBox Name="listBox_DataCollection" Grid.Row="9" Grid.Column="0" Margin="10,1,10,4" ItemsSource="{Binding Source={StaticResource listDataCollection}}" SelectionChanged ="ListBox_SelectionChanged"/>
+
+            <ListBox Name="listBox_details" Grid.Column="1" Grid.Row="9" Margin="0,5,10,10" ItemsSource="{Binding ElementName=listBox_DataCollection, Path=SelectedItem}"  SelectionChanged="listBox_details_SelectionChanged"  />
+            
+        
         </Grid>
     </Grid>
 

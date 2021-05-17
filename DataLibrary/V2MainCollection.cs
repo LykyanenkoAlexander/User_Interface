@@ -102,13 +102,13 @@ namespace DataLibrary
                 CollectionChanged?.Invoke(binaryFormatter, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
 
             }
-            /*
+            
             catch (Exception ex)
             {
                 Console.WriteLine("Loading error" + ex.Message);
 
             }
-            */
+            
             finally
             {
                 if (fileStream != null)

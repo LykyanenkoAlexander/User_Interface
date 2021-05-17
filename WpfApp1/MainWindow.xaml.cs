@@ -27,22 +27,14 @@ namespace WpfApp1
     public partial class MainWindow : Window
     {
         V2MainCollection Lab_Main_Coll = new V2MainCollection();
-        //DataItemElements dataItemElements = new DataItemElements();
         DataItemElements dataItemElements;
         public static RoutedCommand AddCustomCommand = new RoutedCommand("AddCustom", typeof(WpfApp1.MainWindow));
 
-
-
-
-
         public MainWindow()
         {
-            InitializeComponent();
-            
+            InitializeComponent();  
         }
 
-        private void FilterDataOnGrid(object c, FilterEventArgs e) => e.Accepted = e.Item is V2DataOnGrid;
-        private void FilterDataCollection(object c, FilterEventArgs e) => e.Accepted = e.Item is V2DataCollection;
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -90,7 +82,7 @@ namespace WpfApp1
             V2DataOnGrid V2_Grid = new V2DataOnGrid("def_1_Grid", 5, G_1, G_2);
             V2_Grid.InitRandom(5, 10);
             Lab_Main_Coll.Add(V2_Grid);
-            //CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
+            
         }
 
         private void menuItem_Add_Element_from_File(object sender, RoutedEventArgs e)
@@ -158,7 +150,6 @@ namespace WpfApp1
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.InitialDirectory = Directory.GetCurrentDirectory();
             dialog.RestoreDirectory = true;
-            dialog.Filter = "dat files (*.dat)|*.dat|All files (*.*)|*.*";
 
             if (dialog.ShowDialog() == true)
             {
@@ -167,25 +158,7 @@ namespace WpfApp1
                 Lab_Main_Coll = coll;
 
             }
-            /*
-            try
-            {
-                IF_Saved();
-                Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
-                
-                if (dlg.ShowDialog() == true)
-                {
-                    
-                    Lab_Main_Coll.Load(dlg.FileName);
-                    
-                }
-                DataContext = Lab_Main_Coll;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            */
+           
         }
 
         private void menuItem_Save(object sender, RoutedEventArgs e)
@@ -201,32 +174,12 @@ namespace WpfApp1
             }
         }
 
-      
-
-        public class ConverterMid : IValueConverter
-        {
-            public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-            {
-                return ((V2MainCollection)value).Mid_Value;
-
-            }
-
-            public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-            {
-                return value;
-            }
-        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show(Lab_Main_Coll.Mid_Value.ToString());
         }
 
-        /*public void InitDataItemCreator(object sender, RoutedEventArgs e)
-        {
-            dataItemElements = new DataItemElements(listBox_Main.SelectedItem as V2DataCollection);
-            //grid_DataItemCreator.DataContext = dataItemElements;
-        }*/
 
         private void OpenCommandHandler(object sender, ExecutedRoutedEventArgs e)
         {
@@ -297,11 +250,13 @@ namespace WpfApp1
             }
         }
 
-        
+        private void listBox_details_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
 
-        
+        }
 
-
+        private void FilterDataOnGrid(object c, FilterEventArgs e) => e.Accepted = e.Item is V2DataOnGrid;
+        private void FilterDataCollection(object c, FilterEventArgs e) => e.Accepted = e.Item is V2DataCollection;
 
     }
 

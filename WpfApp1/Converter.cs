@@ -13,7 +13,7 @@ namespace WpfApp1
             V2DataOnGrid data = value as V2DataOnGrid;
 
             double max_mod = -1;
-            double min_mod = -1;
+            double min_mod;
 
             if (data != null)
             {

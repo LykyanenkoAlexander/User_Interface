@@ -23,22 +23,6 @@ namespace DataLibrary
         [field: NonSerialized]
         public event NotifyCollectionChangedEventHandler CollectionChanged;
 
-        //2
-        /*public Vector2[] ShowVect()
-        {
-            List<Vector2> res = new List<Vector2>();
-            int i = 0;
-            foreach (var item in Data)
-            {
-                res[i] = item.Vect2;
-                i++;
-            }
-
-
-            return res.ToArray();
-
-        }*/
-
         
         public void Add(DataItem item)
         {
